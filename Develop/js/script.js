@@ -2,6 +2,8 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var currentTimeElement = $('[data-js="current-time"]')
+var schedularElement = $('[data-js="scheduler"]')
+
 
 function displayTimeDate() {
 	var timeDate = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a')
@@ -10,6 +12,16 @@ function displayTimeDate() {
 
 // Display current time & date
 setInterval(displayTimeDate, 1000)
+
+
+
+
+
+
+
+
+
+
 
 // TODO: Add a listener for click events on the save button. This code should
 // use the id in the containing time-block as a key to save the user input in
