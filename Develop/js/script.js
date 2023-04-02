@@ -1,27 +1,81 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var currentTimeElement = $('[data-js="current-time"]')
-var schedularElement = $('[data-js="scheduler"]')
 
+$(document).ready(function () {
+	var schedularElement = $('[data-js="scheduler"]')
+	var currentTimeElement = $('[data-js="current-time"]')
 
-function displayTimeDate() {
-	var timeDate = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a')
-	currentTimeElement.text(timeDate)
-}
+	function displayTimeDate() {
+		var timeDate = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a')
+		currentTimeElement.text(timeDate)
+	}
+	checkTimeBlockStatus()
+	clearInputs()
+	displayTasks()
+	// Display current time & date
+	setInterval(displayTimeDate, 1000)
 
-// Display current time & date
-setInterval(displayTimeDate, 1000)
+	function displayTasks() {
+		var tasks = getTasksFromStorage()
+		console.log(tasks)
+		console.log(tasks[1][10])
 
+		$('textarea').each(function () {
+      var index = $(this).parent().attr('id')
+      console.log(index)
+      $(this).val(tasks[index - 9][index])
+    }) // Where I left off
+	}
 
+	function clearInputs() {
+		$('textarea').val('')
+	}
 
+	function saveTasksToStorage(tasks) {
+		localStorage.setItem('tasks', JSON.stringify(tasks))
+	}
 
+	function getTasksFromStorage() {
+		var tasks = localStorage.getItem('tasks')
+		tasks ? (tasks = JSON.parse(tasks)) : (tasks = [])
+		return tasks
+	}
 
+	function checkTimeBlockStatus() {
+		$('.time-block').each(function () {
+			var currentHour = dayjs().hour()
+			console.log(currentHour)
+			var timeBlockHour = parseInt($(this).attr('id'))
 
+			if (timeBlockHour < currentHour) {
+				$(this).addClass('past')
+			} else if (timeBlockHour === currentHour) {
+				$(this).addClass('current')
+			} else {
+				$(this).addClass('future')
+			}
+		})
+	}
 
+	function saveTask() {
+		var task = $(this).prev().val().trim()
+		var timeBlock = $(this).parent().attr('id')
+		var taskIndex = timeBlock - 9
+		var newTask = {
+			...newTask,
+			[timeBlock]: task,
+		}
 
+		var tasks = getTasksFromStorage()
+		tasks.splice(taskIndex, 1, newTask)
+		saveTasksToStorage(tasks)
+		clearInputs()
+		displayTasks()
+	}
 
-
+	schedularElement.on('click', '.save-button', saveTask)
+})
 
 // TODO: Add a listener for click events on the save button. This code should
 // use the id in the containing time-block as a key to save the user input in

@@ -89,3 +89,16 @@ textarea {
 /* .save-button i:hover {
   
 } */
+
+
+.past {
+  background-color:  red;
+}
+
+.current {
+  background-color: grey;
+}
+
+.future {
+  background-color: green;
+}
