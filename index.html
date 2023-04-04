@@ -21,16 +21,16 @@
   </head>
 
   <body>
-    <div class="page-container d-flex flex-column">
+    <div class="page-container flex">
 
 
       <!-- Header -->
-      <header class="container-fluid bg-danger">
+      <header class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="header-content col-12 flex">
             <h1>Daily Agenda</h1>
             <h3>A simple calendar app for scheduling your work day</h3>
-            <p data-js="current-time"></p>
+            <p class="header-current-time" data-js="current-time"></p>
           </div>
         </div>
       </header>
@@ -38,7 +38,7 @@
 
 
       <!-- Scheduler -->
-      <div id="scheduler" class="container-fluid" data-js="scheduler" >
+      <div id="scheduler" class="container-fluid"  data-js="scheduler" >
         <div id="9" class="row time-block">
           <div class="col-2 col-md-2 time-block__time flex">
             <span>9AM</span>

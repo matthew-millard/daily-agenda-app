@@ -36,3 +36,9 @@ textarea,
 select {
   font: inherit;
 }
+
+textarea:focus {
+  outline: 3px solid #FFBE0B;
+  border-radius: 0.25rem;
+  z-index: 1;
+}

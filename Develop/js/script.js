@@ -18,14 +18,17 @@ $(document).ready(function () {
 
 	function displayTasks() {
 		var tasks = getTasksFromStorage()
-		console.log(tasks)
-		console.log(tasks[1][10])
 
 		$('textarea').each(function () {
-      var index = $(this).parent().attr('id')
-      console.log(index)
-      $(this).val(tasks[index - 9][index])
-    }) // Where I left off
+			var index = $(this).parent().attr('id')
+			var taskIndex = index - 9
+
+			if (tasks[taskIndex]) {
+				$(this).val(tasks[taskIndex][index])
+			} else {
+				$(this).val('')
+			}
+		}) ///////// Where I left off!!!!!!
 	}
 
 	function clearInputs() {
