@@ -8,12 +8,19 @@
   --tertiary-color: #FF006E;
   --accent1-color: #FB5607;
   --accent2-color: #8338EC;
+  --green-color: #8AC926;
+  --light-blue: #5BC0EB;
+  --thistle-color: #EFC7E5;
+  --dark-shade: #272727;
+  --light-shade: #FFFCF9;
+
 }
 
 body {
-background-color: white;  
+background-color: var(--light-shade);  
 font-family: 'Inter', sans-serif;
 font-size: 1.6rem;
+color: var(--dark-shade);
 }
 
 h1 {
@@ -41,6 +48,10 @@ h3 {
   margin-bottom: 4rem;
 }
 
+.flex {
+  display: flex;
+}
+
 header {
   margin-top: 2rem;
   text-align: center;
@@ -60,13 +71,6 @@ header {
   width: fit-content;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
 }
-
-
-
-.flex {
-  display: flex;
-}
-
 
 
 /* Scheduler Container*/
@@ -91,7 +95,7 @@ header {
 
 .time-block__time {
   background-color: #FF006E;
-  border: 2px solid black;
+  border: 2px solid var(--dark-shade);
   border-right: none;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -106,11 +110,11 @@ header {
 
 /* Text Input */
 textarea {
-  background: white;
+  /* background: transparent; */
   resize: none;
-  color: #000000;
+  color: var(--dark-shade);
   padding: 1rem;
-  border: 2px solid black;
+  border: 2px solid var(--dark-shade);
 }
 
 .description {
@@ -124,11 +128,11 @@ textarea {
   background-color: #8338EC;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  border: 2px solid black;
+  border: 2px solid var(--dark-shade);
   border-left: none;
 }
 .save-button i {
-  color: black;
+  color: var(--dark-shade);
   font-size: 2rem;
   transition: 300ms;
 }
@@ -137,20 +141,98 @@ textarea {
   font-size: 3rem;
 }
 
+.footer {
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
 
+.footer-content {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-content > * {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+
+.key-title {
+  font-weight: bold;
+}
+.key-container {
+  width: 80%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.key {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.clear-tasks-button {
+  margin-top: 2rem;
+  font-weight: bold;
+  background-color: var(--light-blue);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  transition-duration: 150ms;
+}
+
+.clear-tasks-button:hover {
+  background-color: var(--primary-color);
+}
+
+.clear-tasks-button:active{
+  box-shadow: none;
+}
+
+
+
+
+/* Time Block Status Indicators */
 .past {
-  
+  background-color: var(--accent1-color);
 }
 
 .current {
-  
+  background-color: var(--secondary-color);
 }
 
 .future {
-  
+  background-color: var(--green-color);
+}
+
+.error-message::placeholder {
+  color: red;
+  font-size: small;
 }
 
 
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 375px ) {
+  
+  .time-block__time span {
+    font-size: 1.2rem;
+  }
+  .save-button i {
+    font-size: 1.5rem;
+  }
+  
+  .save-button i:hover {
+    font-size: 2rem;
+  }
+}
 
 @media only screen and (min-width: 768px) {
   h1 {
@@ -158,7 +240,7 @@ textarea {
   }
 
   h3 {
-    font-size: 3.4rem;
+    font-size: 2.4rem;
   }
 }
 

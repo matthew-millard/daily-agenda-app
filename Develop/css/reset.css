@@ -37,8 +37,14 @@ select {
   font: inherit;
 }
 
+
+/* Set styling for outline on focus */
 textarea:focus {
   outline: 3px solid #FFBE0B;
   border-radius: 0.25rem;
   z-index: 1;
+}
+
+::selection {
+    background-color: var(--tertiary-color);
 }
