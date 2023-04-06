@@ -1,8 +1,4 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-$(document).ready(function () {
+$(function () {
 	var schedularElement = $('[data-js="scheduler"]')
 	var currentTimeElement = $('[data-js="current-time"]')
 
@@ -46,10 +42,12 @@ $(document).ready(function () {
 	}
 
 	function checkTimeBlockStatus() {
-		$('.time-block').each(function () {
+		$('textarea').each(function () {
 			var currentHour = dayjs().hour()
 			console.log(currentHour)
 			var timeBlockHour = parseInt($(this).attr('id'))
+			console.log(timeBlockHour)
+			console.log(currentHour)
 
 			if (timeBlockHour < currentHour) {
 				$(this).addClass('past')

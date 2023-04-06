@@ -16,13 +16,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="./Develop/js/script.js" defer></script>
+    <!-- <script src="./Develop/js/script.js" defer></script> -->
+    <script src="./Develop/js/index.js" defer></script>
     <title>Daily Agenda | A Daily Work Scheduler</title>
   </head>
 
   <body>
     <div class="page-container flex">
-
 
       <!-- Header -->
       <header class="container-fluid">
@@ -35,15 +35,13 @@
         </div>
       </header>
 
-
-
       <!-- Scheduler -->
       <div id="scheduler" class="container-fluid"  data-js="scheduler" >
         <div id="9" class="row time-block">
           <div class="col-2 col-md-2 time-block__time flex">
             <span>9AM</span>
           </div>
-          <textarea class="col-8 col-md-8 description" rows="3" data-js="text-area"></textarea>
+          <textarea class="col-8 col-md-8 description" placeholder="Enter your first daily task here." rows="3" data-js="text-area"></textarea>
           <button class="save-button col-2 col-md-2" data-js="save-button">
             <i class="fas fa-save"></i>
           </button>
@@ -129,15 +127,34 @@
           </button>
         </div>
       </div>
+
+      <!-- Footer - Status Key and Clear Tasks Button -->
+      <footer class="footer container-fluid flex">
+        <div class="row h-100">
+          <div class="footer-content col-12 flex">
+            <div>
+              <span class="key-title">Time Block Status Key</span>
+            </div>
+            <div class="key-container flex">
+              <span>Past Tasks:</span>
+              <div class="past key"></div>
+            </div>
+            <div class="key-container flex">
+              <span>Current Tasks:</span>
+              <div class="current key"></div>
+            </div>
+            <div class="key-container flex">
+              <span>Future Tasks:</span>
+              <div class="future key"></div>
+            </div>
+            <div>
+              <button class="clear-tasks-button" data-js="clear-button">Clear tasks</button>
+            </div>
+          </div>
+        </div>
+      </footer>
       
       </div>
     </div>
-
-
-
-
-
-
-    
   </body>
 </html>
